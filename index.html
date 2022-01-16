@@ -11,39 +11,39 @@
 <body>
     <div class="passwordgenerator">
         <h1 class="passwordgenerator__title">Random Password Generator</h1>
-        <div class="passwordgenerator__item">
-            <label for="password_length" class="passwordgenerator__label">Password Length:</label>
-            <input id="password_length" class="passwordgenerator__input" type="number" value="8">
+        <div class="passwordgenerator__password">
+            <input id="random_password" class="passwordgenerator__password-input" type="text" disabled>
+            <button id="copy_btn" class="passwordgenerator__password-btn passwordgenerator__password-btn--copy"><img src="assets/img/copy-solid.svg" alt="copy"></button>
+            <button id="generate_btn" class="passwordgenerator__password-btn passwordgenerator__password-btn--generate"><img src="assets/img/sync-solid.svg" alt="copy"></button>
         </div>
-        <div class="passwordgenerator__item">
-            <input id="charset_numbers" class="passwordgenerator__checkbox-input" type="checkbox" checked>
-            <div class="passwordgenerator__checkbox-input-custom"></div>
-            <label for="charset_numbers" class="passwordgenerator__checkbox-label">Include numbers [0-9]</label>
+        <div class="passwordgenerator__settings">
+            <div class="passwordgenerator__length-wrap">
+                <label for="password_length" class="passwordgenerator__length-label">Password Length:</label>
+                <input id="password_length" class="passwordgenerator__length-input" type="number" value="8">
+            </div>
+            <div class="passwordgenerator__checkbox-wrap">
+                <div class="passwordgenerator__item">
+                    <input id="charset_numbers" class="passwordgenerator__checkbox-input" type="checkbox" checked>
+                    <div class="passwordgenerator__checkbox-input-custom"></div>
+                    <label for="charset_numbers" class="passwordgenerator__checkbox-label">Include numbers [0-9]</label>
+                </div>
+                <div class="passwordgenerator__item">
+                    <input id="charset_lowercase" class="passwordgenerator__checkbox-input" type="checkbox" checked>
+                    <div class="passwordgenerator__checkbox-input-custom"></div>
+                    <label for="charset_lowercase" class="passwordgenerator__checkbox-label">Include lowercase characters [a-z]</label>
+                </div>
+                <div class="passwordgenerator__item">
+                    <input id="charset_uppercase" class="passwordgenerator__checkbox-input" type="checkbox" checked>
+                    <div class="passwordgenerator__checkbox-input-custom"></div>
+                    <label for="charset_uppercase" class="passwordgenerator__checkbox-label">Include uppercase characters [A-Z]</label>
+                </div>
+                <div class="passwordgenerator__item">
+                    <input id="charset_special" class="passwordgenerator__checkbox-input" type="checkbox" checked>
+                    <div class="passwordgenerator__checkbox-input-custom"></div>
+                    <label for="charset_special" class="passwordgenerator__checkbox-label">Include special symbols [!№;%:?*()_+=]</label>
+                </div>
+            </div>
         </div>
-        <div class="passwordgenerator__item">
-            <input id="charset_lowercase" class="passwordgenerator__checkbox-input" type="checkbox" checked>
-            <div class="passwordgenerator__checkbox-input-custom"></div>
-            <label for="charset_lowercase" class="passwordgenerator__checkbox-label">Include lowercase characters [a-z]</label>
-        </div>
-        <div class="passwordgenerator__item">
-            <input id="charset_uppercase" class="passwordgenerator__checkbox-input" type="checkbox" checked>
-            <div class="passwordgenerator__checkbox-input-custom"></div>
-            <label for="charset_uppercase" class="passwordgenerator__checkbox-label">Include uppercase characters [A-Z]</label>
-        </div>
-        <div class="passwordgenerator__item">
-            <input id="charset_special" class="passwordgenerator__checkbox-input" type="checkbox" checked>
-            <div class="passwordgenerator__checkbox-input-custom"></div>
-            <label for="charset_special" class="passwordgenerator__checkbox-label">Include special symbols [!№;%:?*()_+=]</label>
-        </div>
-        <div class="passwordgenerator__item">
-            <button id="generate_btn" class="passwordgenerator__btn">Generate</button>
-        </div>
-        <div class="passwordgenerator__item">
-            <label for="random_password" class="passwordgenerator__label">Result:</label>
-            <input id="random_password" class="passwordgenerator__input" type="text" disabled>
-            <button id="copy_btn" class="passwordgenerator__copy-btn"><img src="assets/img/copy-solid.svg" alt="copy"></button>
-        </input>
-    </div>
 <script src="assets/js/script.js"></script>
 </body>
 </html>

@@ -1,37 +1,30 @@
 @font-face {
-  font-family: 'Roboto Mono';
-  font-style: normal;
+  font-family: 'Source Sans Pro';
+  font-style: italic;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/robotomono/v13/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_gPqPQw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkhdr.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Roboto Mono';
+  font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/robotomono/v13/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vqPQw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xK3dSBYKcSV-LCoeQqfX1RYOo3aPw.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Roboto Mono';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/robotomono/v13/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_7PqPQw.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto Mono';
+  font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/robotomono/v13/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_AP2PQw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rAkA.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Roboto Mono';
+  font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/robotomono/v13/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_Of2PQw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v18/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vAkA.ttf) format('truetype');
 }
 *,
 *::before,
@@ -39,8 +32,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 16px;
+  color: #392e27;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
 }
 html {
   width: 100%;
@@ -53,17 +47,70 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background: linear-gradient(60deg, #011016 0%, #021921 35%, #075e7d 100%);
-  color: #edf2fb;
+  background-color: #fff;
 }
 .passwordgenerator {
   display: flex;
   flex-direction: column;
+  width: 800px;
 }
 .passwordgenerator__title {
   margin-bottom: 25px;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
+}
+.passwordgenerator__password {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.passwordgenerator__password-input {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-bottom: 2px solid #fff;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  font-size: 22px;
+  font-weight: 700;
+}
+.passwordgenerator__password-btn {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.passwordgenerator__password-btn img {
+  width: 20px;
+}
+.passwordgenerator__password-btn--copy {
+  right: 35px;
+}
+.passwordgenerator__password-btn--copy img {
+  transition: all 0.4s linear;
+}
+.passwordgenerator__password-btn--copy:hover img {
+  transform-origin: center center;
+  transform: scale(1.2);
+}
+.passwordgenerator__password-btn--generate {
+  right: 0;
+}
+.passwordgenerator__password-btn--generate img {
+  transition: all 0.4s linear;
+}
+.passwordgenerator__password-btn--generate:hover img {
+  transform-origin: center center;
+  transform: rotate(180deg);
+}
+.passwordgenerator__settings {
+  display: flex;
 }
 .passwordgenerator__item {
   position: relative;
@@ -71,15 +118,31 @@ body {
   align-items: center;
   margin-bottom: 20px;
 }
-.passwordgenerator__label {
-  margin-right: 20px;
+.passwordgenerator__length-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-right: 40px;
 }
-.passwordgenerator__input {
-  padding: 5px 10px;
-  border: 2px solid #fff;
+.passwordgenerator__length-label {
+  margin-bottom: 10px;
+}
+.passwordgenerator__length-input {
+  width: 80px;
+  padding: 10px 20px;
+  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
   outline: none;
-  background-color: transparent;
-  color: #fff;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  font-size: 20px;
+  text-align: center;
+}
+.passwordgenerator__length-input::-webkit-outer-spin-button,
+.passwordgenerator__length-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .passwordgenerator__checkbox-input {
   position: absolute;
@@ -96,13 +159,14 @@ body {
   align-items: center;
   width: 25px;
   height: 25px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
 }
 .passwordgenerator__checkbox-input-custom::after {
   position: absolute;
   content: "";
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
   opacity: 0;
   background-image: url(../img/check-solid.svg);
 }
@@ -112,38 +176,4 @@ body {
 .passwordgenerator__checkbox-label {
   margin-left: 40px;
   cursor: pointer;
-}
-.passwordgenerator__btn {
-  padding: 5px 30px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: #fff;
-  color: #011016;
-  font-size: 16px;
-  font-weight: 600;
-}
-.passwordgenerator__btn:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-.passwordgenerator__btn:active {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-.passwordgenerator__copy-btn {
-  height: 100%;
-  padding: 0 10px;
-  border: 2px solid #fff;
-  border-left: none;
-  outline: none;
-  cursor: pointer;
-  background-color: transparent;
-}
-.passwordgenerator__copy-btn img {
-  width: 15px;
-}
-.passwordgenerator__copy-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.passwordgenerator__copy-btn:active {
-  background-color: rgba(255, 255, 255, 0.2);
 }
