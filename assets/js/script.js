@@ -13,47 +13,67 @@ document.addEventListener('DOMContentLoaded', function () {
 	const charsetSpecialInput = document.getElementById("charset_special");
 	const randomPasswordInput = document.getElementById("random_password");
     const copyBtn = document.getElementById("copy_btn");
-	let passwordLength = passwordLengthInput.value;
-
-	function generatePassword(length, charset) { 
-	  let password = ""; 
-	  for (let i = 0; i < length; i++) {
-		password += charset[Math.floor(Math.random() * charset.length)];
-	  }
-	  return password;
-	}
-
 	let charsetNumbers = "0123456789";
 	let charsetLowercase = "abcdefghijklmnopqrstuvwxyz";
 	let charsetUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	let charsetSpecial = "!№;%:?*()_+=";
 
+	let length = passwordLengthInput.value;
+	let charset = generateCharset(); 
+	let password = generatePassword(length, charset);
+	showPassword(password);
+
 	generateBtn.addEventListener("click", function () {
-	  let charset = "";
-	  if (charsetNumbersInput.checked) {
-		charset += charsetNumbers;
-	  }
-	  if (charsetLowercaseInput.checked) {
-		charset += charsetLowercase;
-	  }
-	  if (charsetUppercaseInput.checked) {
-		charset += charsetUppercase;
-	  }
-	  if (charsetSpecialInput.checked) {
-		charset += charsetSpecial;
-	  }
-	  if (charset !== "") {
-		passwordLength = passwordLengthInput.value;
-		randomPasswordInput.value = generatePassword(passwordLength, charset);
-	  }
-	  else {
-		randomPasswordInput.value = "error";
-	  }
+		let length = passwordLengthInput.value;
+		let charset = generateCharset(); 
+		let password = generatePassword(length, charset);
+		showPassword(password);
 	});
 
-    copyBtn.addEventListener("click", function() {
+	passwordLengthInput.addEventListener("input", function() {
+		let length = passwordLengthInput.value;
+		let charset = generateCharset(); 
+		let password = generatePassword(length, charset);
+		showPassword(password);
+	});
+
+	copyBtn.addEventListener("click", function() {
         let text = randomPasswordInput.value;
         navigator.clipboard.writeText(text);
     });
+
+	function generateCharset() {
+		let charset = "";
+		if (charsetNumbersInput.checked) {
+			charset += charsetNumbers;
+		}
+		if (charsetLowercaseInput.checked) {
+			charset += charsetLowercase;
+		}
+		if (charsetUppercaseInput.checked) {
+			charset += charsetUppercase;
+		}
+		if (charsetSpecialInput.checked) {
+			charset += charsetSpecial;
+		}
+		return charset;
+	}
+
+	function generatePassword(length, charset) { 
+		let password = "";
+		for (let i = 0; i < length; i++) {
+		  password += charset[Math.floor(Math.random() * charset.length)];
+		}
+		return password;
+	  }
+  
+	function showPassword(password) {
+		if (password !== "") {
+			randomPasswordInput.value = password;
+		}
+		else {
+			randomPasswordInput.value = "error";
+		}
+	}
 	
 });

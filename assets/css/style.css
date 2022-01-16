@@ -68,11 +68,11 @@ body {
   width: 100%;
   padding: 10px 20px;
   border: none;
-  border-bottom: 2px solid #fff;
-  border-radius: 5px;
+  border-bottom: 4px solid #392e27;
+  border-radius: 2px;
   outline: none;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: transparent;
+  box-shadow: 5px 5px 10px rgba(57, 46, 39, 0.2);
+  background-color: #fff;
   font-size: 22px;
   font-weight: 700;
 }
@@ -134,8 +134,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 5px;
   outline: none;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 10px rgba(57, 46, 39, 0.2);
+  background-color: #fff;
   font-size: 20px;
   text-align: center;
 }
@@ -159,8 +159,8 @@ body {
   align-items: center;
   width: 25px;
   height: 25px;
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px rgba(57, 46, 39, 0.2);
+  background-color: #fff;
 }
 .passwordgenerator__checkbox-input-custom::after {
   position: absolute;
