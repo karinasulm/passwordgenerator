@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			showPassword(password);
 			rangeInput.value = this.value;
 		} else if (this.value < minLength) {
-			randomPasswordInput.value = "Min. length is 5. Please, input the correct length.";
+			randomPasswordInput.value = "Min. length is 4. Please, input the correct length.";
 			rangeInput.value = minLength;
 		} else if (this.value > maxLength) {
-			randomPasswordInput.value = "Max. length is 64. Please, input the correct length.";
+			randomPasswordInput.value = "Max. length is 24. Please, input the correct length.";
 			rangeInput.value = maxLength;
 		}
 	});
@@ -60,6 +60,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	copyBtn.addEventListener("click", function() {
         let text = randomPasswordInput.value;
         navigator.clipboard.writeText(text);
+		copyBtn.classList.add("active");
+		setTimeout(function () {
+			copyBtn.classList.remove("active");
+		}, 1600);
     });
 
 	rangeInput.addEventListener("input", function () {
