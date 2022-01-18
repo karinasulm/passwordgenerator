@@ -19,7 +19,12 @@
         <div class="passwordgenerator__settings">
             <div class="passwordgenerator__length-wrap">
                 <label for="password_length" class="passwordgenerator__length-label">Password Length:</label>
-                <input id="password_length" class="passwordgenerator__length-input" type="number" value="8">
+                <input id="password_length" class="passwordgenerator__length-input" type="number" value="8" min="4" max="24">
+                <div class="passwordgenerator__range range">
+                    <div class="range__input-wrapper">
+                        <input class="range__input" id="range-input" name="range" type="range" value="8" min="4" max="24">
+                    </div>
+                </div>
             </div>
             <div class="passwordgenerator__checkbox-wrap">
                 <div class="passwordgenerator__item">

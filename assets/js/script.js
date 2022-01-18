@@ -13,14 +13,25 @@ document.addEventListener('DOMContentLoaded', function () {
 	const charsetSpecialInput = document.getElementById("charset_special");
 	const randomPasswordInput = document.getElementById("random_password");
     const copyBtn = document.getElementById("copy_btn");
+	const rangeInput = document.getElementById("range-input");
+	const minLength = 4;
+	const maxLength = 24;
+
 	let charsetNumbers = "0123456789";
 	let charsetLowercase = "abcdefghijklmnopqrstuvwxyz";
 	let charsetUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	let charsetSpecial = "!№;%:?*()_+=";
-
 	let length = passwordLengthInput.value;
 	let charset = generateCharset(); 
 	let password = generatePassword(length, charset);
+	let checkboxInput = document.getElementsByClassName("passwordgenerator__checkbox-input");
+	
+	passwordLengthInput.value = rangeInput.value;
+
+	rangeInput.oninput = function() {
+		passwordLengthInput.value = this.value;
+	}
+
 	showPassword(password);
 
 	generateBtn.addEventListener("click", function () {
@@ -31,16 +42,41 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	passwordLengthInput.addEventListener("input", function() {
-		let length = passwordLengthInput.value;
-		let charset = generateCharset(); 
-		let password = generatePassword(length, charset);
-		showPassword(password);
+		if ((this.value >= minLength) && (this.value <= maxLength)) {
+			let length = passwordLengthInput.value;
+			let charset = generateCharset(); 
+			let password = generatePassword(length, charset);
+			showPassword(password);
+			rangeInput.value = this.value;
+		} else if (this.value < minLength) {
+			randomPasswordInput.value = "Min. length is 5. Please, input the correct length.";
+			rangeInput.value = minLength;
+		} else if (this.value > maxLength) {
+			randomPasswordInput.value = "Max. length is 64. Please, input the correct length.";
+			rangeInput.value = maxLength;
+		}
 	});
 
 	copyBtn.addEventListener("click", function() {
         let text = randomPasswordInput.value;
         navigator.clipboard.writeText(text);
     });
+
+	rangeInput.addEventListener("input", function () {
+			let length = passwordLengthInput.value;
+			let charset = generateCharset(); 
+			let password = generatePassword(length, charset);
+			showPassword(password);
+	});
+
+	for (let i = 0; i < checkboxInput.length; i++) {
+		checkboxInput[i].addEventListener("input", function () {
+			let length = passwordLengthInput.value;
+			let charset = generateCharset(); 
+			let password = generatePassword(length, charset);
+			showPassword(password);
+		});
+	}
 
 	function generateCharset() {
 		let charset = "";
@@ -61,8 +97,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function generatePassword(length, charset) { 
 		let password = "";
-		for (let i = 0; i < length; i++) {
-		  password += charset[Math.floor(Math.random() * charset.length)];
+		if (charset !== "") {
+			for (let i = 0; i < length; i++) {
+			password += charset[Math.floor(Math.random() * charset.length)];
+			}
 		}
 		return password;
 	  }
@@ -72,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			randomPasswordInput.value = password;
 		}
 		else {
-			randomPasswordInput.value = "error";
+			randomPasswordInput.value = "Error. Please, сhoose at least one checkbox.";
 		}
 	}
 	
